@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cjuc8r4bhjn5e"]
+
+[ext_resource type="Script" uid="uid://pwyhn5tpg62k" path="res://detectionmeter.gd" id="1_h0kuk"]
+[ext_resource type="Texture2D" uid="uid://d1p73chkt7et3" path="res://assets/detectionmeter/vignettewhite.png" id="1_nlacl"]
+[ext_resource type="Texture2D" uid="uid://bxhf1r7jd8uvk" path="res://assets/detectionmeter/detectionmeter.png" id="3_h0kuk"]
+
+[node name="DetectionMeter" type="Control" unique_id=49715098]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h0kuk")
+maxSeenTime = 1.6400000000000001
+decayRate = 1.5
+metadata/_edit_lock_ = true
+
+[node name="vignette" type="TextureRect" parent="." unique_id=976683970]
+modulate = Color(1, 0.011764706, 0.015686275, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nlacl")
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="center" type="CenterContainer" parent="." unique_id=1728078368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="squarecontainer" type="AspectRatioContainer" parent="center" unique_id=991606093]
+layout_mode = 2
+
+[node name="progressbar" type="TextureProgressBar" parent="center/squarecontainer" unique_id=1849972345]
+modulate = Color(1, 1, 1, 0.44705883)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 8
+radial_initial_angle = 180.0
+texture_progress = ExtResource("3_h0kuk")
