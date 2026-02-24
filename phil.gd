@@ -1,31 +1,52 @@
 extends CharacterBody2D
 
 @export var view_length = 100
+@export var view_angle = PI/6
 
 var direction = Vector2(1,0)
 var rays_to_draw = []
-
+var debug_color = Color.GREEN
 func _ready() -> void:
 	pass
 	
 	
 func _physics_process(delta: float) -> void:
-	rays_to_draw = []
-	var original_angle = direction.angle()
-	for i in range(-4,4):
-		var angle = remap(i,-4,4,-PI/6,PI/6)
-		var new_direction = Vector2.from_angle(original_angle+angle)
-		raycast(new_direction*view_length)
+	var collision_result = check_for_collision()
+	if(collision_result):
+		debug_color = Color.RED
+	else:
+		debug_color = Color.GREEN
 	queue_redraw()
 
 func _draw() -> void:
+	var poly_array: PackedVector2Array = [position]
+	var color_array: PackedColorArray = [debug_color]
 	for ray in rays_to_draw:
-		draw_line(ray[0],ray[1],Color.GREEN,1)
+		draw_line(ray[0],ray[1],debug_color,1)
+		poly_array.append(ray[1])
+		color_array.append(debug_color)
+	draw_polygon(poly_array,color_array,)
+
+
+
+func check_for_collision() -> bool:
+	var collision_result = false
+	rays_to_draw = []
+	var original_angle = direction.angle()
+	for i in range(-4,4):
+		var angle = remap(i,-4,4,-view_angle,view_angle)
+		var new_direction = Vector2.from_angle(original_angle+angle)
+		var result = raycast(new_direction*view_length)
+		if(result):
+			collision_result = true
+	return collision_result
+
+	
 
 func raycast(vect: Vector2):
 	var space_state = get_world_2d().direct_space_state
 	#global coords
-	var query = PhysicsRayQueryParameters2D.create(position, position+vect)
+	var query = PhysicsRayQueryParameters2D.create(position, position+vect,2)
 	var result = space_state.intersect_ray(query)
 	
 	var raycast_points = [position, position+vect]

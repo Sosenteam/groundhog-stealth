@@ -51,6 +51,8 @@ move_dash={
 
 2d_render/layer_1="Collision"
 2d_render/layer_2="Detection"
+2d_physics/layer_1="Collision"
+2d_physics/layer_2="Detection"
 
 [physics]
 
