@@ -1,31 +1,36 @@
-extends CharacterBody2D
+class_name Phil extends CharacterBody2D
 
 @export var view_length = 100
 @export var view_angle = PI/6
+@export var speed = 50
 
 var direction = Vector2(1,0)
 var rays_to_draw = []
 var debug_color = Color.GREEN
+var view_cone_enabled = false
+
 func _ready() -> void:
 	pass
 	
 	
 func _physics_process(delta: float) -> void:
-	var collision_result = check_for_collision()
-	if(collision_result):
-		debug_color = Color.RED
-	else:
-		debug_color = Color.GREEN
+	if(view_cone_enabled):
+		var collision_result = check_for_collision()
+		if(collision_result):
+			debug_color = Color.RED
+		else:
+			debug_color = Color.GREEN
 	queue_redraw()
 
 func _draw() -> void:
-	var poly_array: PackedVector2Array = [position]
-	var color_array: PackedColorArray = [debug_color]
-	for ray in rays_to_draw:
-		draw_line(ray[0],ray[1],debug_color,1)
-		poly_array.append(ray[1])
-		color_array.append(debug_color)
-	draw_polygon(poly_array,color_array,)
+	if(view_cone_enabled):
+		var poly_array: PackedVector2Array = [Vector2(0,0)]
+		var color_array: PackedColorArray = [debug_color]
+		for ray in rays_to_draw:
+			#draw_line(to_local(ray[0]),to_local(ray[1]),debug_color,1)
+			poly_array.append(to_local(ray[1]))
+			color_array.append(debug_color)
+		draw_polygon(poly_array,color_array,)
 
 
 
@@ -52,3 +57,7 @@ func raycast(vect: Vector2):
 	var raycast_points = [position, position+vect]
 	rays_to_draw.push_back(raycast_points)
 	return result
+
+
+func _on_state_timer_timeout() -> void:
+	$StateMachine._random_state()

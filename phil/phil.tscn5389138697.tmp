@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cplpa17jbsapc"]
+
+[ext_resource type="Texture2D" uid="uid://du7fkd77trqpa" path="res://assets/phil (temporary)/tile_0012.png" id="1_c3lps"]
+[ext_resource type="Script" uid="uid://byw37qm6gsfph" path="res://phil/phil.gd" id="1_qf3c0"]
+[ext_resource type="Script" uid="uid://d4bhw3klhhf2a" path="res://phil/phil_state_machine.gd" id="3_u43oq"]
+[ext_resource type="Script" uid="uid://u67kntbaonqv" path="res://phil/states/idle.gd" id="4_vx72j"]
+[ext_resource type="Script" uid="uid://bash48vfyw38o" path="res://phil/states/searching.gd" id="5_r80mi"]
+[ext_resource type="Script" uid="uid://cfms68kcldwb6" path="res://phil/states/burrowing.gd" id="5_wxeps"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4y77u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c3lps")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3lps"]
+height = 24.0
+
+[node name="Phil" type="CharacterBody2D" unique_id=161662381]
+script = ExtResource("1_qf3c0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=929682683]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4y77u")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=237147578]
+shape = SubResource("CapsuleShape2D_c3lps")
+
+[node name="StateTimer" type="Timer" parent="." unique_id=732525273]
+wait_time = 3.0
+autostart = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=117218529]
+script = ExtResource("3_u43oq")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=419872495]
+script = ExtResource("4_vx72j")
+
+[node name="Burrowing" type="Node" parent="StateMachine" unique_id=1748945000]
+script = ExtResource("5_wxeps")
+
+[node name="Searching" type="Node" parent="StateMachine" unique_id=986239750]
+script = ExtResource("5_r80mi")
+metadata/_custom_type_script = "uid://c8pq7s0esture"
+
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
