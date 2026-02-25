@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 			debug_color = Color.RED
 			if(!was_detecting):
 				start_detecting.emit()
-				was_detecting = true
+			was_detecting = true
 		else:
 			debug_color = Color.GREEN
 			if(was_detecting):
