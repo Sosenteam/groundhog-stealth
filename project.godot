@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/scale=3.0
 
 [input]
 
