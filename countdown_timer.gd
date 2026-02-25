@@ -5,7 +5,7 @@ signal countdown_finished
 @onready var label = $Label
 @onready var timer = $Timer
 
-var count = 3 
+var count = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +28,7 @@ func _on_timer_timeout():
 	count -= 1
 	update_display()
 
-	if count < -1: 
+	if count < -1:
 		emit_signal("countdown_finished")
 		queue_free()
 

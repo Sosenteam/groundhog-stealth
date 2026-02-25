@@ -12,9 +12,6 @@ var current_level_node = null
 @onready var player_node = $Player
 const clock_scene = preload("res://clock.tscn")
 var active_clock: Node
-func _ready():
-	# countdown.countdown_finished.connected(_start_level_clock)
-	load_level("res://levels/template level.tscn")
 
 func load_level(level_path: String):
 	if current_level_node:
@@ -25,15 +22,23 @@ func load_level(level_path: String):
 
 	level_container.add_child(current_level_node)
 
-	countdown.start_countdown()
+	if debug.get("show_countdown", true):
+		countdown.start_countdown()
+	else:
+		countdown.hide()
+		countdown.countdown_finished.emit()
 
 
 func _physics_process(delta: float) -> void:
-	if player_node.velocity.length() > 0:
-		active_clock.start_counting()
+	pass
 
 func _ready() -> void:
-	#creating clock
+	# creating clock
 	active_clock = clock_scene.instantiate()
 	active_clock.setup(70.0)
 	add_child(active_clock)
+	
+	# Connect countdown signal to start the clock
+	countdown.countdown_finished.connect(active_clock.start_counting)
+	
+	load_level("res://levels/template level.tscn")

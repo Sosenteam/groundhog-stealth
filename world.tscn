@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://do1tsxu2dehlr" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dxb2ov5is2nnp" path="res://player.tscn" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil.tscn" id="2_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://cjyrvnc0va5ec" path="res://countdown_timer.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil/phil.tscn" id="2_tlwt5"]
+[ext_resource type="PackedScene" path="res://countdown_timer.tscn" id="5_036b0"]
 
 [node name="World" type="Node2D" unique_id=1311250771]
 script = ExtResource("1_aqk2v")
