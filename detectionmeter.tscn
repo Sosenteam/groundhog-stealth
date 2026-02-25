@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://pwyhn5tpg62k" path="res://detectionmeter.gd" id="1_h0kuk"]
 [ext_resource type="Texture2D" uid="uid://d1p73chkt7et3" path="res://assets/detectionmeter/vignettewhite.png" id="1_nlacl"]
 [ext_resource type="Texture2D" uid="uid://bxhf1r7jd8uvk" path="res://assets/detectionmeter/detectionmeter.png" id="3_h0kuk"]
+[ext_resource type="Texture2D" uid="uid://b622q5athoncr" path="res://assets/detectionmeter/question.png" id="4_gy3qq"]
+[ext_resource type="Texture2D" uid="uid://bxo3voksgfmkx" path="res://assets/detectionmeter/exclamation.png" id="5_lqtg7"]
 
 [node name="DetectionMeter" type="Control" unique_id=49715098]
 layout_mode = 3
@@ -12,8 +14,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h0kuk")
-maxSeenTime = 1.6400000000000001
+maxSeenTime = 1.64
 decayRate = 1.5
+canPhilSeePlayer = true
 metadata/_edit_lock_ = true
 
 [node name="vignette" type="TextureRect" parent="." unique_id=976683970]
@@ -48,3 +51,33 @@ value = 1.0
 fill_mode = 8
 radial_initial_angle = 180.0
 texture_progress = ExtResource("3_h0kuk")
+
+[node name="question" type="TextureRect" parent="center/squarecontainer/progressbar" unique_id=2119287837]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -102.0
+offset_right = 64.0
+offset_bottom = 26.000061
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_gy3qq")
+
+[node name="exclamation" type="TextureRect" parent="center/squarecontainer/progressbar" unique_id=1571346214]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -532.0
+offset_right = 64.0
+offset_bottom = -403.99994
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_lqtg7")
