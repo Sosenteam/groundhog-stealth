@@ -19,32 +19,41 @@ transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 [node name="NightEffect" type="Panel" parent="CanvasLayer" unique_id=1301420679]
 offset_left = -37.0
 offset_top = -40.0
-offset_right = 1610.0
-offset_bottom = 973.3333
+offset_right = 1951.6666
+offset_bottom = 1108.3333
 theme_override_styles/panel = SubResource("StyleBoxFlat_c2meu")
 
-[node name="Backgroundclock" type="TextureRect" parent="CanvasLayer" unique_id=1647490010]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_4n1wf")
-metadata/_edit_use_anchors_ = true
+[node name="ClockContainer" type="Control" parent="CanvasLayer" unique_id=1308359209]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 110.0
+scale = Vector2(3, 3)
 
-[node name="Outerclock" type="TextureRect" parent="CanvasLayer" unique_id=1191897666]
+[node name="Backgroundclock" type="TextureRect" parent="CanvasLayer/ClockContainer" unique_id=1647490010]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_4n1wf")
+
+[node name="Outerclock" type="TextureRect" parent="CanvasLayer/ClockContainer" unique_id=1191897666]
+layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
 texture = ExtResource("2_cqx04")
-metadata/_edit_use_anchors_ = true
 
-[node name="Innerclock" type="TextureRect" parent="CanvasLayer/Outerclock" unique_id=614798239]
+[node name="Innerclock" type="TextureRect" parent="CanvasLayer/ClockContainer/Outerclock" unique_id=614798239]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 rotation = 6.2831855
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("3_c2meu")
-metadata/_edit_use_anchors_ = true
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer" unique_id=1941909568]
+[node name="TimeLabel" type="Label" parent="CanvasLayer/ClockContainer" unique_id=1941909568]
+layout_mode = 0
 offset_left = 31.666666
 offset_top = 38.333332
 offset_right = 73.666664

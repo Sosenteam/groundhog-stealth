@@ -68,3 +68,4 @@ one_shot = true
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=188491945]
+zoom = Vector2(3, 3)

@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var time_label = $CanvasLayer/TimeLabel
-@onready var innerclock = $CanvasLayer/Outerclock/Innerclock
+@onready var time_label = $CanvasLayer/ClockContainer/TimeLabel
+@onready var innerclock = $CanvasLayer/ClockContainer/Outerclock/Innerclock
 @onready var night_effect_panel = $CanvasLayer/NightEffect
 var time_left = 60.0
 var counting_down = false
