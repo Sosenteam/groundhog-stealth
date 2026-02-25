@@ -4,6 +4,10 @@ class_name Phil extends CharacterBody2D
 @export var view_angle = PI/6
 @export var speed = 50
 
+signal start_detecting
+signal stop_detecting
+
+var was_detecting:bool = false
 var direction = Vector2(1,0)
 var rays_to_draw = []
 var debug_color = Color.GREEN
@@ -14,12 +18,19 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	
 	if(view_cone_enabled):
 		var collision_result = check_for_collision()
 		if(collision_result):
 			debug_color = Color.RED
+			if(!was_detecting):
+				start_detecting.emit()
+				was_detecting = true
 		else:
 			debug_color = Color.GREEN
+			if(was_detecting):
+				stop_detecting.emit()
+			was_detecting = false
 	queue_redraw()
 
 func _draw() -> void:
