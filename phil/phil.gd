@@ -57,7 +57,3 @@ func raycast(vect: Vector2):
 	var raycast_points = [position, position+vect]
 	rays_to_draw.push_back(raycast_points)
 	return result
-
-
-func _on_state_timer_timeout() -> void:
-	$StateMachine._random_state()
