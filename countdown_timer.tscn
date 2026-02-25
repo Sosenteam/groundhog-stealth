@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cjyrvnc0va5ec"]
+
+[ext_resource type="Script" uid="uid://bxymsd0pldus0" path="res://countdown_timer.gd" id="1_omojj"]
+
+[node name="CountdownTimer" type="CanvasLayer" unique_id=2144968753]
+script = ExtResource("1_omojj")
+
+[node name="Label" type="Label" parent="." unique_id=70320137]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="." unique_id=816447557]
