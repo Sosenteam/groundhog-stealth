@@ -20,7 +20,7 @@ canPhilSeePlayer = true
 metadata/_edit_lock_ = true
 
 [node name="vignette" type="TextureRect" parent="." unique_id=976683970]
-modulate = Color(1, 0.011764706, 0.015686275, 1)
+modulate = Color(1, 0.011764706, 0.015686275, 0.49803922)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
