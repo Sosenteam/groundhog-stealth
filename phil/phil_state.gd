@@ -3,6 +3,7 @@ class_name PhilState extends State
 const IDLE = "Idle"
 const BURROWING = "Burrowing"
 const SEARCHING = "Searching"
+const EMERGING = "Emerging"
 
 var phil: Phil
 

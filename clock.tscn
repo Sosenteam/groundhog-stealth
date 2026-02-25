@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b8kocq2cywd57"]
+
+[ext_resource type="Texture2D" uid="uid://dlfnbe2mv1cs3" path="res://assets/timer/backgroundclock.png" id="1_4n1wf"]
+[ext_resource type="Script" uid="uid://d0onjk5t8owfn" path="res://clock.gd" id="1_cqx04"]
+[ext_resource type="Texture2D" uid="uid://duj5vos0pbhxd" path="res://assets/timer/outerclock.png" id="2_cqx04"]
+[ext_resource type="Texture2D" uid="uid://bn0wjn301s7jp" path="res://assets/timer/innerclock.png" id="3_c2meu"]
+[ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="5_c2meu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2meu"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.11764706)
+
+[node name="Clock" type="Node2D" unique_id=1746878596]
+script = ExtResource("1_cqx04")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1188449529]
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+
+[node name="NightEffect" type="Panel" parent="CanvasLayer" unique_id=1301420679]
+offset_left = -37.0
+offset_top = -40.0
+offset_right = 1610.0
+offset_bottom = 973.3333
+theme_override_styles/panel = SubResource("StyleBoxFlat_c2meu")
+
+[node name="Backgroundclock" type="TextureRect" parent="CanvasLayer" unique_id=1647490010]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_4n1wf")
+metadata/_edit_use_anchors_ = true
+
+[node name="Outerclock" type="TextureRect" parent="CanvasLayer" unique_id=1191897666]
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_cqx04")
+metadata/_edit_use_anchors_ = true
+
+[node name="Innerclock" type="TextureRect" parent="CanvasLayer/Outerclock" unique_id=614798239]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 6.2831855
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("3_c2meu")
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer" unique_id=1941909568]
+offset_left = 31.666666
+offset_top = 38.333332
+offset_right = 73.666664
+offset_bottom = 68.33333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_c2meu")
+theme_override_font_sizes/font_size = 14
+text = "0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
