@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	elif(input_dir.x>0):
 		$AnimatedSprite2D.flip_h = false
+		
 
 	
 	#animations
