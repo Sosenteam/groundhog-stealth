@@ -4,9 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dxb2ov5is2nnp" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://bwipd0j8u1l2a" path="res://levels/template level.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil/phil.tscn" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bjyha30bwjeno" path="res://coins/coin.tscn" id="3_dwbse"]
+[ext_resource type="PackedScene" uid="uid://caruxtugr2x8w" path="res://coins/coin_spawner.tscn" id="5_036b0"]
 
 [node name="World" type="Node2D" unique_id=1311250771]
 script = ExtResource("1_aqk2v")
+
+[node name="CoinSpawner" parent="." unique_id=1000671851 instance=ExtResource("5_036b0")]
+coinPrefab = ExtResource("3_dwbse")
 
 [node name="TemplateLevel" parent="." unique_id=1036107649 instance=ExtResource("1_fj7yv")]
 
