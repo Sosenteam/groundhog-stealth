@@ -14,8 +14,8 @@ var ringMaxAlpha = 0.447058824;
 var currentSeenTime:float;
 var timeAfterStoppedBeingSeen:float;
 
-func setCanPhilSeePlayer(canSeePlayer:bool):
-	self.canPhilSeePlayer = canPhilSeePlayer
+func setCanPhilSeePlayer(newCanSee:bool):
+	canPhilSeePlayer = newCanSee
 	
 func setSettings(maxSeenTime:float, decayRate:float, decayDelay:float):
 	self.maxSeenTime = maxSeenTime;
@@ -42,12 +42,22 @@ func _process(delta: float) -> void:
 	var detectionPercentage = clampf(currentSeenTime / maxSeenTime, 0.0, 1.0);
 	var vignettePercentage = clampf((currentSeenTime - vignetteStartPercent) / (maxSeenTime - vignetteStartPercent), 0.0, 1.0);
 	
-	$vignette.modulate.a = vignettePercentage * vignetteMaxAlpha;
+	$vignette.modulate.a = sqrt(vignettePercentage) * vignetteMaxAlpha;
 	
 	$center/squarecontainer/progressbar.value = detectionPercentage;
-	$center/squarecontainer/progressbar.modulate.a = detectionPercentage * ringMaxAlpha;
+	$center/squarecontainer/progressbar.modulate.a = sqrt(detectionPercentage) * ringMaxAlpha;
 	
 	$center/squarecontainer/progressbar/exclamation.modulate.a = clampf((detectionPercentage - 0.4) * 2, 0, 1)
 	
 	if(detectionPercentage >= 1.0):
 		detected.emit();
+
+
+func _on_phil_start_detecting() -> void:
+	print(":3")
+	setCanPhilSeePlayer(true)
+
+
+func _on_phil_stop_detecting() -> void:
+	print("3:")
+	setCanPhilSeePlayer(false)
