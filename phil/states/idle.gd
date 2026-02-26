@@ -5,7 +5,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	phil.velocity = Vector2.ZERO
 	$"../../AnimatedSprite2D".play("idle")
 	phil.view_cone_enabled = false
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	$"../../StateMachine"._random_state()
 
 

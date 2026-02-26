@@ -13,6 +13,9 @@ var rays_to_draw = []
 var debug_color = Color.GREEN
 var view_cone_enabled = false
 
+@onready var arrow_pivot = $ArrowPivot
+@onready var indicator_arrow = $ArrowPivot/IndicatorArrow
+
 func _ready() -> void:
 	pass
 	
@@ -35,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	
+	# Draw View Cone
 	if(view_cone_enabled):
 		# Make array of points for detection polygon
 		var poly_array: PackedVector2Array = [Vector2(0,0)]
@@ -45,8 +48,6 @@ func _draw() -> void:
 			poly_array.append(to_local(ray[1]))
 			color_array.append(debug_color)
 		draw_polygon(poly_array,color_array)
-
-
 ## Sents out raycasts across -view_angle to x
 func check_for_collision() -> bool:
 	var collision_result = false
@@ -72,3 +73,5 @@ func raycast(vect: Vector2):
 	var raycast_points = [position, position+vect]
 	rays_to_draw.push_back(raycast_points)
 	return result
+
+	
