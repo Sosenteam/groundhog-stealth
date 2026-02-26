@@ -23,6 +23,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	await get_tree().create_timer(3.0).timeout
 	finished.emit("Idle")
 
+func exit() -> void:
+	phil.stop_detecting.emit()
 
 func physics_update(_delta: float) -> void:
 	pass
