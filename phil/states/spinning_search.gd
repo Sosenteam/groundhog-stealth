@@ -14,6 +14,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	#indicate_tween.parallel().tween_property(phil.indicator_arrow,"rotation",(-1.5*PI),0.5)
 	indicate_tween.tween_property(phil.indicator_arrow,"visible",false,0)
 	await get_tree().create_timer(0.5).timeout
+	phil.direction = Vector2.from_angle(PI)
 	
 	#viewcone
 	
