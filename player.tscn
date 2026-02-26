@@ -46,7 +46,7 @@ radius = 7.0
 height = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1038731677]
-collision_layer = 7
+collision_layer = 3
 script = ExtResource("1_onrkg")
 speed = 100
 dash_time = 0.1
