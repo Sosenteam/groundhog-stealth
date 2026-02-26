@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dxb2ov5is2nnp" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://caruxtugr2x8w" path="res://coins/coin_spawner.tscn" id="2_036b0"]
 [ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil/phil.tscn" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://cjuc8r4bhjn5e" path="res://detectionmeter.tscn" id="3_dwbse"]
 [ext_resource type="PackedScene" uid="uid://d2cocoqvke31k" path="res://countdown_timer.tscn" id="5_036b0"]
 
 [node name="World" type="Node2D" unique_id=1311250771]
@@ -27,3 +28,10 @@ grow_vertical = 2
 position = Vector2(-104, 0)
 
 [node name="CountdownTimer" parent="." unique_id=2144968753 instance=ExtResource("5_036b0")]
+
+[node name="DetectionLayer" type="CanvasLayer" parent="." unique_id=1225458925]
+
+[node name="DetectionMeter" parent="DetectionLayer" unique_id=49715098 instance=ExtResource("3_dwbse")]
+
+[connection signal="start_detecting" from="Phil" to="DetectionLayer/DetectionMeter" method="_on_phil_start_detecting"]
+[connection signal="stop_detecting" from="Phil" to="DetectionLayer/DetectionMeter" method="_on_phil_stop_detecting"]
