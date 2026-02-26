@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://b53lg2tmfhxo3" path="res://assets/background-tileset.tres" id="1_ktbm8"]
 
-[node name="TemplateLevel" type="Node2D" unique_id=1036107649]
+[node name="TemplateLevel" type="Node2D" unique_id=1195392604]
 metadata/_edit_group_ = true
 
 [node name="BackgroundTilemap" type="TileMapLayer" parent="." unique_id=2052378961]
