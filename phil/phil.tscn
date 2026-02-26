@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bm8k54sb7yo7u" path="res://assets/phil (temporary)/tile_0014.png" id="3_gpkbw"]
 [ext_resource type="Script" uid="uid://d4bhw3klhhf2a" path="res://phil/phil_state_machine.gd" id="3_u43oq"]
 [ext_resource type="Script" uid="uid://u67kntbaonqv" path="res://phil/states/idle.gd" id="4_vx72j"]
-[ext_resource type="Script" uid="uid://bash48vfyw38o" path="res://phil/states/searching.gd" id="5_r80mi"]
+[ext_resource type="Script" uid="uid://bash48vfyw38o" path="res://phil/states/spinning_search.gd" id="5_r80mi"]
 [ext_resource type="Script" uid="uid://cfms68kcldwb6" path="res://phil/states/burrowing.gd" id="5_wxeps"]
 [ext_resource type="Script" uid="uid://c6h8fprdjo4yi" path="res://phil/states/emerging.gd" id="8_xyla7"]
+[ext_resource type="Script" uid="uid://bfoq4cogat3x6" path="res://phil/states/forward_search.gd" id="10_ifyon"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4y77u"]
 animations = [{
@@ -64,10 +65,14 @@ script = ExtResource("4_vx72j")
 [node name="Burrowing" type="Node" parent="StateMachine" unique_id=1748945000]
 script = ExtResource("5_wxeps")
 
-[node name="Searching" type="Node" parent="StateMachine" unique_id=986239750]
+[node name="SpinningSearch" type="Node" parent="StateMachine" unique_id=986239750]
 script = ExtResource("5_r80mi")
 metadata/_custom_type_script = "uid://c8pq7s0esture"
 
 [node name="Emerging" type="Node" parent="StateMachine" unique_id=1787488899]
 script = ExtResource("8_xyla7")
+metadata/_custom_type_script = "uid://c8pq7s0esture"
+
+[node name="ForwardSearch" type="Node" parent="StateMachine" unique_id=1149789511]
+script = ExtResource("10_ifyon")
 metadata/_custom_type_script = "uid://c8pq7s0esture"

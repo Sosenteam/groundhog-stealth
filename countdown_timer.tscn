@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d2cocoqvke31k"]
+
+[ext_resource type="Script" uid="uid://bxymsd0pldus0" path="res://countdown_timer.gd" id="1_omojj"]
+[ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="2_r0a3g"]
+
+[node name="CountdownTimer" type="CanvasLayer" unique_id=2144968753]
+script = ExtResource("1_omojj")
+
+[node name="Label" type="Label" parent="." unique_id=70320137]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -49.5
+offset_right = 20.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_r0a3g")
+theme_override_font_sizes/font_size = 82
+
+[node name="Timer" type="Timer" parent="." unique_id=816447557]

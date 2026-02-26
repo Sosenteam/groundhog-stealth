@@ -6,11 +6,9 @@ signal detected
 @export var decayRate:float;
 @export var decayDelay:float = 0.2;
 
-@export_group("visuals")
-@export var vignetteMaxAlpha:float = 0.5;
-@export var vignetteStartPercent:float = 0.5;
-
-@export var ringMaxAlpha = 0.447058824;
+var vignetteMaxAlpha:float = 0.5;
+var vignetteStartPercent:float = 0.5;
+var ringMaxAlpha = 0.447058824;
 
 @export var canPhilSeePlayer:bool = false;
 var currentSeenTime:float;
@@ -25,7 +23,8 @@ func setSettings(maxSeenTime:float, decayRate:float, decayDelay:float):
 	self.decayDelay = decayDelay;
 
 func _ready() -> void:
-	pass
+	vignetteMaxAlpha = $vignette.modulate.a;
+	ringMaxAlpha = $center/squarecontainer/progressbar.modulate.a
 
 func _process(delta: float) -> void:
 	if canPhilSeePlayer:
