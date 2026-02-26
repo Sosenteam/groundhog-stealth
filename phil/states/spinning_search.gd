@@ -30,4 +30,4 @@ func exit() -> void:
 	phil.stop_detecting.emit()
 
 func physics_update(_delta: float) -> void:
-	phil.direction = phil.direction.rotated(0.06)
+	phil.direction = phil.direction.rotated(0.12)
