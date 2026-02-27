@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://caruxtugr2x8w" path="res://coins/coin_spawner.tscn" id="2_036b0"]
 [ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil/phil.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cjuc8r4bhjn5e" path="res://detectionmeter.tscn" id="3_dwbse"]
-[ext_resource type="PackedScene" uid="uid://d2cocoqvke31k" path="res://countdown_timer.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" path="res://countdown_timer.tscn" id="5_036b0"]
 
 [node name="World" type="Node2D" unique_id=1311250771]
 script = ExtResource("1_aqk2v")

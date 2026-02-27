@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://c84rhq80wi0wn"]
+
+[ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="1_l2arl"]
+[ext_resource type="Script" uid="uid://cjms8xu4oka1q" path="res://win_screen.gd" id="1_l5t5q"]
+[ext_resource type="PackedScene" uid="uid://lippvwqu3k3h" path="res://calender.tscn" id="3_1txte"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmwda"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
+
+[sub_resource type="Animation" id="Animation_l5t5q"]
+length = 3.897
+loop_mode = 2
+step = 1.8273
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Popup/Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-654, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Popup/Panel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1154, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Popup/Label1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(222, 673)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Popup/Label2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(131, 672)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Calender:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Popup/Label2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Popup/Label1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1txte"]
+resource_name = "winpopup"
+length = 8.65
+loop_mode = 2
+step = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Popup/Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96000004),
+"transitions": PackedFloat32Array(1, 0.3),
+"update": 0,
+"values": [Vector2(-654, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Popup/Panel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96000004),
+"transitions": PackedFloat32Array(1, 0.3),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(504, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Popup/Label1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.57, 5.97, 7.04),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(222, 673), Vector2(214, 168), Vector2(214, 168), Vector2(372, 190)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Popup/Label2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(2.0500002, 2.82, 5.96, 6.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(131, 672), Vector2(125, 317), Vector2(125, 317), Vector2(362, 358)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Calender:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(3.97, 5.83),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Popup/Label2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(5.96, 6.98),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.49, 0.49)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Popup/Label1:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/keys = {
+"times": PackedFloat32Array(5.97, 7.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.58, 0.58)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26557"]
+_data = {
+&"RESET": SubResource("Animation_l5t5q"),
+&"winpopup": SubResource("Animation_1txte")
+}
+
+[node name="WinScreen" type="Control" unique_id=299086818]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5t5q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=258471175]
+
+[node name="Popup" type="Control" parent="CanvasLayer" unique_id=1374861217]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Popup" unique_id=190172857]
+layout_mode = 0
+offset_left = -654.0
+offset_right = -6.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmwda")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Popup" unique_id=2022361150]
+layout_mode = 0
+offset_left = 1154.0
+offset_top = -3.0
+offset_right = 1802.0034
+offset_bottom = 645.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmwda")
+
+[node name="Label1" type="Label" parent="CanvasLayer/Popup" unique_id=1962869320]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 673.0
+offset_right = 972.0
+offset_bottom = 775.0
+theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_font_sizes/font_size = 54
+text = "You Survived The Day!"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Popup" unique_id=947733901]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 672.0
+offset_right = 1043.0017
+offset_bottom = 879.0001
+theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_font_sizes/font_size = 54
+text = "Get Ready For Next Year...
+(maybe pop up shop)"
+
+[node name="Calender" parent="CanvasLayer" unique_id=393428817 instance=ExtResource("3_1txte")]
+offset_top = -648.0
+offset_bottom = -648.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1402997885]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_26557")
+
+[node name="Timer" type="Timer" parent="CanvasLayer" unique_id=1627088499]
+wait_time = 7.5
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]
