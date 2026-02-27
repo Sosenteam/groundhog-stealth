@@ -3,7 +3,8 @@ extends PhilState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	phil.velocity = Vector2.ZERO
-	phil.direction = Vector2.from_angle(randf_range(0,2*PI))
+	phil.direction= (phil.player_ref.position-phil.position).normalized()
+	phil.direction.rotated(randf_range(-PI/6,PI/6))
 	#Indicate
 	phil.arrow_pivot.rotation = 0
 	phil.indicator_arrow.visible = true
@@ -14,7 +15,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	indicate_tween.tween_property(phil.indicator_arrow,"visible",false,0)
 	#viewcone
 	phil.view_cone_enabled = true
-	phil.view_angle = PI/6
+	phil.view_angle = PI/6.5
 	# Make Viewlength Stretch
 	phil.view_length = 0
 	var view_length_tween = get_tree().create_tween()

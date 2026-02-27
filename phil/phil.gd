@@ -13,12 +13,16 @@ var direction = Vector2(1,0)
 var rays_to_draw = []
 var debug_color = Color.GREEN
 var view_cone_enabled = false
+var recent_states = []
 
 @onready var arrow_pivot = $ArrowPivot
 @onready var indicator_arrow = $ArrowPivot/IndicatorArrow
+var player_ref
+
 
 func _ready() -> void:
-	pass
+	if(get_parent().has_node("Player")):
+		player_ref = $"../Player"
 	
 	
 func _physics_process(delta: float) -> void:

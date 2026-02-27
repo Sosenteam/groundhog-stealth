@@ -9,7 +9,7 @@ var count = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.wait_time = 1.0
+	timer.wait_time = 0.75
 	timer.timeout.connect(_on_timer_timeout)
 	update_display()
 	
