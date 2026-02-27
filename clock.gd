@@ -63,3 +63,6 @@ func determine_alpha():
 		
 	stylebox.bg_color = Color(0.0, 0.0, 0.0, alpha)
 	night_effect_panel.add_theme_stylebox_override("panel", stylebox)
+	
+func getTimeInSeconds():
+	return (int(time_left) / 60) + (int(time_left) % 60)
