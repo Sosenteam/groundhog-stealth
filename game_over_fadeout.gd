@@ -16,4 +16,4 @@ func _ready() -> void:
 	
 	await blacktween.finished
 	
-	print("Fade complete")
+	print("Gop")
