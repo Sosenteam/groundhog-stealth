@@ -13,6 +13,8 @@ var current_level_node = null
 const clock_scene = preload("res://clock.tscn")
 var active_clock: Node
 
+@export var gameoverScreenPrefab:PackedScene;
+
 func load_level(level_path: String):
 	if current_level_node:
 		current_level_node.queue_free()
@@ -42,3 +44,8 @@ func _ready() -> void:
 	countdown.countdown_finished.connect(active_clock.start_counting)
 	
 	load_level("res://levels/template level.tscn")
+
+
+func _on_detected() -> void:
+	var instance = gameoverScreenPrefab.instantiate();
+	add_child(instance);
