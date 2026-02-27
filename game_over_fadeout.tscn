@@ -1,9 +1,15 @@
-[gd_scene format=3 uid="uid://bn3bmckwfs6mk"]
+[gd_scene format=3 uid="uid://df6di7oqkd2mj"]
 
-[ext_resource type="Script" uid="uid://bn5gssxx2yql7" path="res://game_over_fadeout.gd" id="1_6pea2"]
+[ext_resource type="Script" uid="uid://564iimxv561d" path="res://game_over_fadeout.gd" id="1_6pea2"]
 [ext_resource type="Texture2D" uid="uid://bxesb00d0dhp1" path="res://assets/whitescreen.png" id="1_f5l8f"]
+[ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="3_yjcny"]
+
+[sub_resource type="Theme" id="Theme_ohykv"]
+default_font = ExtResource("3_yjcny")
+default_font_size = 40
 
 [node name="GameOverFadeout" type="CanvasLayer" unique_id=1629070600]
+process_mode = 3
 script = ExtResource("1_6pea2")
 
 [node name="redout" type="TextureRect" parent="." unique_id=139454141]
@@ -14,3 +20,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_f5l8f")
+
+[node name="restart" type="Button" parent="." unique_id=219861696]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ohykv")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Restart"
+
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
