@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cfms68kcldwb6" path="res://phil/states/burrowing.gd" id="5_wxeps"]
 [ext_resource type="Script" uid="uid://c6h8fprdjo4yi" path="res://phil/states/emerging.gd" id="8_xyla7"]
 [ext_resource type="Script" uid="uid://bfoq4cogat3x6" path="res://phil/states/forward_search.gd" id="10_ifyon"]
+[ext_resource type="Script" uid="uid://jpljlept17u" path="res://phil/states/circle_search.gd" id="11_33hcl"]
 [ext_resource type="Texture2D" uid="uid://ido4y0jwgcf1" path="res://assets/arrow.png" id="11_rncno"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4y77u"]
@@ -78,6 +79,10 @@ metadata/_custom_type_script = "uid://c8pq7s0esture"
 
 [node name="ForwardSearch" type="Node" parent="StateMachine" unique_id=1149789511]
 script = ExtResource("10_ifyon")
+metadata/_custom_type_script = "uid://c8pq7s0esture"
+
+[node name="CircleSearch" type="Node" parent="StateMachine" unique_id=1292670877]
+script = ExtResource("11_33hcl")
 metadata/_custom_type_script = "uid://c8pq7s0esture"
 
 [node name="ArrowPivot" type="Node2D" parent="." unique_id=490432737]

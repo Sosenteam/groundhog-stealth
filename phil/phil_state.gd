@@ -5,6 +5,7 @@ const BURROWING = "Burrowing"
 const SPINNINGSEARCH = "SpinningSearch"
 const EMERGING = "Emerging"
 const FORWARDSEARCH = "ForwardSearch"
+const CIRCLESEARCH = "CircleSearch"
 
 var phil: Phil
 

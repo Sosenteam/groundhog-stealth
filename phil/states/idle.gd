@@ -30,6 +30,8 @@ func decide_state():
 	if(dist_between<120):
 		for i in range(1,3-phil.recent_states.count(SPINNINGSEARCH)):
 			avaliable_states.append(SPINNINGSEARCH)
+		for i in range(1,3-phil.recent_states.count(CIRCLESEARCH)):
+			avaliable_states.append(CIRCLESEARCH)
 	for i in range(1,3-phil.recent_states.count(FORWARDSEARCH)):
 		avaliable_states.append(FORWARDSEARCH)
 	
