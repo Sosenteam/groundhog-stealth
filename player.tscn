@@ -42,8 +42,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 7.0
-height = 16.0
+radius = 9.0
+height = 18.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1038731677]
 collision_layer = 7
@@ -58,7 +58,14 @@ sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"idle"
 frame_progress = 0.04971444
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=50871058]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329803871]
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1514940831]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=50871058]
 shape = SubResource("CapsuleShape2D_onrkg")
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=720195993]

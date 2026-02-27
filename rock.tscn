@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dbm8idoubamgh"]
+
+[ext_resource type="Texture2D" uid="uid://bfrgcre4aqmkv" path="res://assets/collision-objects/rock.png" id="1_o0qsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0qsl"]
+size = Vector2(18, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68h2w"]
+size = Vector2(32.5, 29.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wecdg"]
+size = Vector2(30, 36)
+
+[node name="Rock" type="StaticBody2D" unique_id=793963178]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=342456144]
+texture = ExtResource("1_o0qsl")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=135261674]
+position = Vector2(24, -18.5)
+shape = SubResource("RectangleShape2D_o0qsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1027987896]
+position = Vector2(-18.25, -20.625)
+shape = SubResource("RectangleShape2D_68h2w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=112574696]
+position = Vector2(-13, 0)
+shape = SubResource("RectangleShape2D_68h2w")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=297600035]
+position = Vector2(-2, 16)
+shape = SubResource("RectangleShape2D_68h2w")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1245172021]
+position = Vector2(11, -9)
+shape = SubResource("RectangleShape2D_68h2w")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1287376638]
+position = Vector2(18, 17)
+shape = SubResource("RectangleShape2D_wecdg")
