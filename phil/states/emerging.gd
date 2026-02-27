@@ -1,6 +1,6 @@
 extends PhilState
 
-@export var emerge_time = 0.8
+@export var emerge_time = 0.25
 
 
 func enter(previous_state_path: String, data := {}) -> void:

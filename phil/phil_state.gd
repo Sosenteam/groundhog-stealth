@@ -4,6 +4,7 @@ const IDLE = "Idle"
 const BURROWING = "Burrowing"
 const SPINNINGSEARCH = "SpinningSearch"
 const EMERGING = "Emerging"
+const FORWARDSEARCH = "ForwardSearch"
 
 var phil: Phil
 

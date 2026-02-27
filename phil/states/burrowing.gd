@@ -9,9 +9,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	phil.set_collision_layer_value(1,false)
 	phil.set_collision_mask_value(1,false)
 
-	# REPLACE THIS CODE PLEASE
-	if($"../../../Player"):
-		target_position = $"../../../Player".position+Vector2(randf_range(-20,20),randf_range(-20,20))
+	target_position = phil.player_ref.position+Vector2(randf_range(-20,20),randf_range(-20,20))
 
 
 
