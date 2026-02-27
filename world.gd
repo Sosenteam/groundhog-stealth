@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	# creating clock
 	active_clock = clock_scene.instantiate()
-	active_clock.setup(5.0)
+	active_clock.setup(60.0)
 	add_child(active_clock)
 	
 	# Connect countdown signal to start the clock

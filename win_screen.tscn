@@ -8,7 +8,7 @@
 bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
 
 [sub_resource type="Animation" id="Animation_l5t5q"]
-length = 3.897
+length = 17.88
 loop_mode = 2
 step = 1.8273
 tracks/0/type = "value"
@@ -100,7 +100,7 @@ tracks/6/keys = {
 resource_name = "winpopup"
 length = 8.65
 loop_mode = 2
-step = 8.0
+step = 60.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -193,6 +193,7 @@ _data = {
 }
 
 [node name="WinScreen" type="Control" unique_id=299086818]
+z_index = 25
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
