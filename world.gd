@@ -17,8 +17,6 @@ var runWin = true
 
 @export var gameoverScreenPrefab:PackedScene;
 
-@export var gameoverScreenPrefab:PackedScene;
-
 func load_level(level_path: String):
 	if current_level_node:
 		current_level_node.queue_free()
