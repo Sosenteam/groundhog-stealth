@@ -257,4 +257,8 @@ libraries/ = SubResource("AnimationLibrary_26557")
 [node name="Timer" type="Timer" parent="CanvasLayer" unique_id=1627088499]
 wait_time = 7.5
 
+[node name="Timer2" type="Timer" parent="CanvasLayer" unique_id=247473763]
+wait_time = 13.0
+
 [connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Timer2" to="." method="_on_timer_2_timeout"]
