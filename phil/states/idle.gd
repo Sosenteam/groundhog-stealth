@@ -19,7 +19,7 @@ func decide_state():
 	if(phil.recent_states.size()>2):
 		phil.recent_states.pop_front()
 	var avaliable_states = []
-	if(dist_between>100 && !phil.recent_states.has(BURROWING)):
+	if(dist_between>70 && !phil.recent_states.has(BURROWING)):
 		avaliable_states.append(BURROWING)
 		if dist_between>200:
 			avaliable_states.append(BURROWING)
