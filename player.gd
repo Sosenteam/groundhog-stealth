@@ -5,6 +5,8 @@ class_name Player extends CharacterBody2D
 @export var dash_cooldown = 1
 @export var dash_mult = 6
 
+@export var coinCount:int = 0;
+
 var input_dir = Vector2.ZERO
 
 func _ready() -> void:
@@ -45,3 +47,5 @@ func _input(event: InputEvent) -> void:
 func dash_active_callback():
 	$DashCooldown.start()
 	
+func addCoin(value:int):
+	coinCount += value;

@@ -39,8 +39,8 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	print(target_state_path)
 
 func _random_state():
-	var next_state_id = randi_range(0,1)
-	var next_state = ["Burrowing","SpinningSearch"][next_state_id]
+	var next_state_id = randi_range(0,2)
+	var next_state = ["Burrowing","SpinningSearch","ForwardSearch"][next_state_id]
 	_transition_to_next_state(next_state)
 	
 	
