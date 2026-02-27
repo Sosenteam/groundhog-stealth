@@ -45,6 +45,8 @@ func _process(delta: float) -> void:
 		add_child(win_node)
 		#load new win scene
 		runWin = false
+		$DetectionLayer/DetectionMeter.canDie = false;
+		$DetectionLayer/DetectionMeter.canBeSeen = false
 		print("hhs")
 
 func _ready() -> void:
@@ -60,5 +62,6 @@ func _ready() -> void:
 
 
 func _on_detected() -> void:
+	runWin = false;
 	var instance = gameoverScreenPrefab.instantiate();
 	add_child(instance);

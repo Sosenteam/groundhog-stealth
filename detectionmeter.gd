@@ -13,7 +13,8 @@ var ringMaxAlpha = 0.447058824;
 @export var canPhilSeePlayer:bool = false;
 var currentSeenTime:float;
 var timeAfterStoppedBeingSeen:float;
-var detectedThisYear = false;
+var canDie = false;
+var canBeSeen = true;
 
 func setCanPhilSeePlayer(newCanSee:bool):
 	canPhilSeePlayer = newCanSee
@@ -28,7 +29,7 @@ func _ready() -> void:
 	ringMaxAlpha = $center/squarecontainer/progressbar.modulate.a
 
 func _process(delta: float) -> void:
-	if canPhilSeePlayer:
+	if canPhilSeePlayer && canBeSeen:
 		currentSeenTime += delta;
 		timeAfterStoppedBeingSeen = 0;
 	else:
@@ -50,9 +51,9 @@ func _process(delta: float) -> void:
 	
 	$center/squarecontainer/progressbar/exclamation.modulate.a = clampf((detectionPercentage - 0.4) * 2, 0, 1)
 	
-	if(detectionPercentage >= 1.0 and !detectedThisYear):
+	if(detectionPercentage >= 1.0 and !canDie):
 		print("Player Detected by phil!")
-		detectedThisYear = true;
+		canDie = true;
 		detected.emit();
 
 
