@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://do1tsxu2dehlr" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dxb2ov5is2nnp" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://caruxtugr2x8w" path="res://coins/coin_spawner.tscn" id="2_036b0"]
-[ext_resource type="PackedScene" uid="uid://bn3bmckwfs6mk" path="res://game_over_fadeout.tscn" id="2_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil/phil.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cjuc8r4bhjn5e" path="res://detectionmeter.tscn" id="3_dwbse"]
 [ext_resource type="PackedScene" path="res://countdown_timer.tscn" id="5_036b0"]
 
 [node name="World" type="Node2D" unique_id=1311250771]
 script = ExtResource("1_aqk2v")
-gameoverScreenPrefab = ExtResource("2_pkg7o")
 
 [node name="CoinSpawner" parent="." unique_id=1000671851 instance=ExtResource("2_036b0")]
 
@@ -37,4 +35,3 @@ position = Vector2(-104, 0)
 
 [connection signal="start_detecting" from="Phil" to="DetectionLayer/DetectionMeter" method="_on_phil_start_detecting"]
 [connection signal="stop_detecting" from="Phil" to="DetectionLayer/DetectionMeter" method="_on_phil_stop_detecting"]
-[connection signal="detected" from="DetectionLayer/DetectionMeter" to="." method="_on_detected"]
