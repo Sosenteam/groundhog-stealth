@@ -10,13 +10,14 @@ extends Node2D
 var current_level_node = null
 
 @onready var player_node = $Player
+@onready var phil_node = $Phil
 const clock_scene = preload("res://clock.tscn")
 const win_scene = preload("res://win_screen.tscn")
 var active_clock: Node
 var win_node: Node
 var runWin = true
 
-@export var gameoverScreenPrefab:PackedScene;
+@export var gameoverScreenPrefab: PackedScene;
 
 func load_level(level_path: String):
 	if current_level_node:
@@ -34,10 +35,10 @@ func load_level(level_path: String):
 		countdown.countdown_finished.emit()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#Getting if time ran out, if so, show win screen
 	#!!FOR NOW ONLY RUNS ONCE!!
 	#print(active_clock.getTimeInSeconds())
@@ -63,10 +64,22 @@ func _ready() -> void:
 	active_clock.setup(20.0)
 	add_child(active_clock)
 	
-	# Connect countdown signal to start the clock
+	# Connect countdown signal to start the clock and start phil and player
 	countdown.countdown_finished.connect(active_clock.start_counting)
+	countdown.countdown_finished.connect(_on_countdown_finished)
+	
+	# Pause player and phil to start game
+	player_node.process_mode = PROCESS_MODE_DISABLED
+	phil_node.process_mode = PROCESS_MODE_DISABLED
+	level_container.process_mode = PROCESS_MODE_DISABLED
 	
 	load_level("res://levels/template level.tscn")
+
+
+func _on_countdown_finished():
+	player_node.process_mode = PROCESS_MODE_INHERIT
+	phil_node.process_mode = PROCESS_MODE_INHERIT
+	level_container.process_mode = PROCESS_MODE_INHERIT
 
 
 func _on_detected() -> void:
