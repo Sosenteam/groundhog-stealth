@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c36p4y75h7qcy"]
+[gd_scene format=3 uid="uid://dktam53yshq8x"]
 
 [ext_resource type="Texture2D" uid="uid://dflmy0vdo6a07" path="res://assets/collision-objects/stump.png" id="1_tdylo"]
-[ext_resource type="Script" uid="uid://bm21rldsdpkm0" path="res://stump.gd" id="1_twbc7"]
+[ext_resource type="Script" path="res://stump.gd" id="1_twbc7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twbc7"]
 radius = 32.0
