@@ -19,10 +19,11 @@ func enter(previous_state_path: String, data := {}) -> void:
 	# Make Viewlength Stretch
 	phil.view_length = 0
 	var view_length_tween = get_tree().create_tween()
-	view_length_tween.tween_property(phil,"view_length",100,1).set_trans(Tween.TRANS_EXPO)
+	phil.direction *= -1
+	view_length_tween.tween_property(phil,"view_length",80,1.25).set_trans(Tween.TRANS_EXPO)
 	view_length_tween.tween_property(phil,"direction",phil.direction*-1,0)
 	view_length_tween.parallel().tween_property(phil,"view_length",0,0)
-	view_length_tween.tween_property(phil,"view_length",100,.75).set_trans(Tween.TRANS_EXPO)
+	view_length_tween.tween_property(phil,"view_length",80,.75).set_trans(Tween.TRANS_EXPO)
 	$"../../AnimatedSprite2D".play("idle")
 	await get_tree().create_timer(3.0).timeout
 	finished.emit("Idle")
