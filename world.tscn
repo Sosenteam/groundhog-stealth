@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dxb2ov5is2nnp" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://caruxtugr2x8w" path="res://coins/coin_spawner.tscn" id="2_036b0"]
 [ext_resource type="PackedScene" uid="uid://df6di7oqkd2mj" path="res://game_over_fadeout.tscn" id="2_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://cplpa17jbsapc" path="res://phil/phil.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cjuc8r4bhjn5e" path="res://detectionmeter.tscn" id="3_dwbse"]
 [ext_resource type="PackedScene" uid="uid://d2cocoqvke31k" path="res://countdown_timer.tscn" id="5_036b0"]
 
@@ -24,8 +23,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Phil" parent="." unique_id=161662381 instance=ExtResource("2_tlwt5")]
-
 [node name="Player" parent="." unique_id=1038731677 instance=ExtResource("1_f3sb7")]
 position = Vector2(-104, 0)
 
@@ -34,7 +31,6 @@ position = Vector2(-104, 0)
 [node name="DetectionMeter" parent="DetectionLayer" unique_id=49715098 instance=ExtResource("3_dwbse")]
 
 [node name="CountdownTimer" parent="." unique_id=2144968753 instance=ExtResource("5_036b0")]
+process_mode = 3
 
-[connection signal="start_detecting" from="Phil" to="DetectionLayer/DetectionMeter" method="_on_phil_start_detecting"]
-[connection signal="stop_detecting" from="Phil" to="DetectionLayer/DetectionMeter" method="_on_phil_stop_detecting"]
 [connection signal="detected" from="DetectionLayer/DetectionMeter" to="." method="_on_detected"]

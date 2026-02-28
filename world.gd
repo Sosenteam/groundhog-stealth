@@ -13,11 +13,13 @@ var current_level_node = null
 @onready var phil_node = $Phil
 const clock_scene = preload("res://clock.tscn")
 const win_scene = preload("res://win_screen.tscn")
+const phil_scene = preload("res://phil/phil.tscn")
 var active_clock: Node
 var win_node: Node
 var runWin = true
 
 @export var gameoverScreenPrefab: PackedScene;
+
 
 func load_level(level_path: String):
 	if current_level_node:
@@ -69,18 +71,22 @@ func _ready() -> void:
 	countdown.countdown_finished.connect(_on_countdown_finished)
 	
 	# Pause player and phil to start game
-	player_node.process_mode = PROCESS_MODE_DISABLED
-	phil_node.process_mode = PROCESS_MODE_DISABLED
-	level_container.process_mode = PROCESS_MODE_DISABLED
+	#player_node.process_mode = PROCESS_MODE_DISABLED
+	#phil_node.process_mode = PROCESS_MODE_DISABLED
+	#level_container.process_mode = PROCESS_MODE_DISABLED
+	get_tree().paused = true
+	
 	
 	load_level("res://levels/template level.tscn")
 
 
 func _on_countdown_finished():
-	player_node.process_mode = PROCESS_MODE_INHERIT
-	phil_node.process_mode = PROCESS_MODE_INHERIT
-	level_container.process_mode = PROCESS_MODE_INHERIT
-
+	#player_node.process_mode = PROCESS_MODE_INHERIT
+	#phil_node.process_mode = PROCESS_MODE_INHERIT
+	#level_container.process_mode = PROCESS_MODE_INHERIT
+	var new_phil = phil_scene.instantiate()
+	add_child(new_phil)
+	get_tree().paused = false
 
 func _on_detected() -> void:
 	runWin = false;
