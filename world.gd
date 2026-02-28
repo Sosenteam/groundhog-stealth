@@ -39,23 +39,22 @@ func _physics_process(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	#Getting if time ran out, if so, show win screen
-	#!!FOR NOW ONLY RUNS ONCE!!
-	#print(active_clock.getTimeInSeconds())
 	if active_clock.getTimeInSeconds() == 0.0 && runWin == true:
 		win_node = win_scene.instantiate()
 		add_child(win_node)
-		#load new win scene
+		win_node.win_finished.connect(_on_win_finished)
 		runWin = false
-		$DetectionLayer/DetectionMeter.canDie = false;
+		get_tree().paused = true
+		$DetectionLayer/DetectionMeter.canDie = false
 		$DetectionLayer/DetectionMeter.canBeSeen = false
-		print("hhs")
 		active_clock.time_left = -1.0
-	if win_node != null:
-		print(win_node.get_kill_me())
-	if win_node != null && win_node.get_kill_me():
-		print("hello")
-		$WinScreen.queue_free()
-		$WinScreen.hide()
+
+func _on_win_finished() -> void:
+	if win_node:
+		win_node.queue_free()
+		win_node = null
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func _ready() -> void:
 	# creating clock

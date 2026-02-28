@@ -193,6 +193,7 @@ _data = {
 }
 
 [node name="WinScreen" type="Control" unique_id=299086818]
+process_mode = 3
 z_index = 25
 layout_mode = 3
 anchors_preset = 15
@@ -243,8 +244,7 @@ offset_right = 1043.0017
 offset_bottom = 879.0001
 theme_override_fonts/font = ExtResource("1_l2arl")
 theme_override_font_sizes/font_size = 54
-text = "Get Ready For Next Year...
-(maybe pop up shop)"
+text = "Get Ready For Next Year..."
 
 [node name="Calender" parent="CanvasLayer" unique_id=393428817 instance=ExtResource("3_1txte")]
 offset_top = -648.0
@@ -255,9 +255,11 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_26557")
 
 [node name="Timer" type="Timer" parent="CanvasLayer" unique_id=1627088499]
+process_mode = 3
 wait_time = 7.5
 
 [node name="Timer2" type="Timer" parent="CanvasLayer" unique_id=247473763]
+process_mode = 3
 wait_time = 13.0
 
 [connection signal="timeout" from="CanvasLayer/Timer" to="." method="_on_timer_timeout"]
