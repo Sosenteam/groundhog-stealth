@@ -69,23 +69,27 @@ func _ready() -> void:
 	countdown.countdown_finished.connect(active_clock.start_counting)
 	countdown.countdown_finished.connect(_on_countdown_finished)
 	
-	# Pause player and phil to start game
-	#player_node.process_mode = PROCESS_MODE_DISABLED
-	#phil_node.process_mode = PROCESS_MODE_DISABLED
-	#level_container.process_mode = PROCESS_MODE_DISABLED
+	# The scene starts paused during countdown
 	get_tree().paused = true
-	
 	
 	load_level("res://levels/template level.tscn")
 
 
 func _on_countdown_finished():
-	#player_node.process_mode = PROCESS_MODE_INHERIT
-	#phil_node.process_mode = PROCESS_MODE_INHERIT
-	#level_container.process_mode = PROCESS_MODE_INHERIT
 	var new_phil = phil_scene.instantiate()
 	add_child(new_phil)
+	
+	# Connect the new Phil's signals to the detection meter this took so long kmn
+	new_phil.start_detecting.connect($DetectionLayer/DetectionMeter._on_phil_start_detecting)
+	new_phil.stop_detecting.connect($DetectionLayer/DetectionMeter._on_phil_stop_detecting)
+	
 	get_tree().paused = false
+	# Ensure detection is active if I'm wrong
+	$DetectionLayer.show()
+	$DetectionLayer/DetectionMeter.show()
+	$DetectionLayer/DetectionMeter.canDie = true
+	$DetectionLayer/DetectionMeter.hasBeenDetected = false
+	$DetectionLayer/DetectionMeter.canBeSeen = true
 
 func _on_detected() -> void:
 	runWin = false;

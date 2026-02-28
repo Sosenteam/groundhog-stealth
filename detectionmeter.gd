@@ -13,8 +13,9 @@ var ringMaxAlpha = 0.447058824;
 @export var canPhilSeePlayer:bool = false;
 var currentSeenTime:float;
 var timeAfterStoppedBeingSeen:float;
-var canDie = false;
+var hasBeenDetected = false;
 var canBeSeen = true;
+@export var canDie = true; # Controls if the player can actually lose
 
 func setCanPhilSeePlayer(newCanSee:bool):
 	canPhilSeePlayer = newCanSee
@@ -27,6 +28,7 @@ func setSettings(maxSeenTime:float, decayRate:float, decayDelay:float):
 func _ready() -> void:
 	vignetteMaxAlpha = $vignette.modulate.a;
 	ringMaxAlpha = $center/squarecontainer/progressbar.modulate.a
+	if ringMaxAlpha == 0: ringMaxAlpha = 0.8
 
 func _process(delta: float) -> void:
 	if canPhilSeePlayer && canBeSeen:
@@ -51,9 +53,9 @@ func _process(delta: float) -> void:
 	
 	$center/squarecontainer/progressbar/exclamation.modulate.a = clampf((detectionPercentage - 0.4) * 2, 0, 1)
 	
-	if(detectionPercentage >= 1.0 and !canDie):
+	if(detectionPercentage >= 1.0 and !hasBeenDetected and canDie):
 		print("Player Detected by phil!")
-		canDie = true;
+		hasBeenDetected = true;
 		detected.emit();
 
 
