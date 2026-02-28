@@ -10,7 +10,6 @@ extends Node2D
 var current_level_node = null
 
 @onready var player_node = $Player
-@onready var phil_node = $Phil
 const clock_scene = preload("res://clock.tscn")
 const win_scene = preload("res://win_screen.tscn")
 const phil_scene = preload("res://phil/phil.tscn")
@@ -62,7 +61,7 @@ func _on_win_finished() -> void:
 func _ready() -> void:
 	# creating clock
 	active_clock = clock_scene.instantiate()
-	active_clock.setup(20.0)
+	active_clock.setup(60.0)
 	add_child(active_clock)
 	
 	# Connect countdown signal to start the clock and start phil and player
@@ -85,6 +84,7 @@ func _on_countdown_finished():
 	#level_container.process_mode = PROCESS_MODE_INHERIT
 	var new_phil = phil_scene.instantiate()
 	add_child(new_phil)
+	$DetectionLayer/DetectionMeter.connect_phil(new_phil)
 	get_tree().paused = false
 
 func _on_detected() -> void:

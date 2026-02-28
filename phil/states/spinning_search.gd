@@ -28,7 +28,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	phil.view_cone_enabled = true
 	phil.view_angle = PI/8
-	phil.view_length = 90
+	phil.view_length =0
+	var view_length_tween = get_tree().create_tween()
+	view_length_tween.tween_property(phil,"view_length",120,0.25)
+	#phil.view_length = 90
 	$"../../AnimatedSprite2D".play("idle")
 	await get_tree().create_timer(3.0).timeout
 	finished.emit("Idle")

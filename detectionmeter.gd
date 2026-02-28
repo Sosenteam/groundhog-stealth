@@ -25,8 +25,10 @@ func setSettings(maxSeenTime:float, decayRate:float, decayDelay:float):
 	self.decayDelay = decayDelay;
 
 func _ready() -> void:
-	vignetteMaxAlpha = $vignette.modulate.a;
-	ringMaxAlpha = $center/squarecontainer/progressbar.modulate.a
+	#vignetteMaxAlpha = $vignette.modulate.a;
+	#ringMaxAlpha = $center/squarecontainer/progressbar.modulate.a
+	vignetteMaxAlpha = 0.5
+	ringMaxAlpha = 0.8
 
 func _process(delta: float) -> void:
 	if canPhilSeePlayer && canBeSeen:
@@ -56,12 +58,14 @@ func _process(delta: float) -> void:
 		canDie = true;
 		detected.emit();
 
+func connect_phil(phil_ref):
+	phil_ref.start_detecting.connect(_on_phil_start_detecting)
+	phil_ref.stop_detecting.connect(_on_phil_stop_detecting)
+	
 
 func _on_phil_start_detecting() -> void:
-	print(":3")
 	setCanPhilSeePlayer(true)
 
 
 func _on_phil_stop_detecting() -> void:
-	print("3:")
 	setCanPhilSeePlayer(false)
