@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 			determine_alpha()
 			set_time_label()
 		else:
-			print(" seconds passed")
+			#print(" seconds passed")
 			set_process(false) # Stops the process
 			
 #this determines what level of darkness (the opacity of the night effect panel) there is. It's really janky, pelase fix if you are willing or hate it enought to do so (:
@@ -63,3 +63,6 @@ func determine_alpha():
 		
 	stylebox.bg_color = Color(0.0, 0.0, 0.0, alpha)
 	night_effect_panel.add_theme_stylebox_override("panel", stylebox)
+	
+func getTimeInSeconds():
+	return (int(time_left) / 60) + (int(time_left) % 60)

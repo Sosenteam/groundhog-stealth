@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bn3bmckwfs6mk"]
+
+[ext_resource type="Script" uid="uid://bn5gssxx2yql7" path="res://game_over_fadeout.gd" id="1_6pea2"]
+[ext_resource type="Texture2D" uid="uid://bxesb00d0dhp1" path="res://assets/whitescreen.png" id="1_f5l8f"]
+
+[node name="GameOverFadeout" type="CanvasLayer" unique_id=1629070600]
+script = ExtResource("1_6pea2")
+
+[node name="redout" type="TextureRect" parent="." unique_id=139454141]
+modulate = Color(1, 0.08627451, 0.003921569, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f5l8f")
