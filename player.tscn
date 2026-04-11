@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cc7yx6bkdo35y" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ps7uiovmqsy0" path="res://assets/player/tile_0006.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://dxdjulh2hwr1p" path="res://assets/player/tile_0004.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://d0f6k710rrn6k" path="res://assets/phil (temporary)/down.png" id="3_sweqy"]
 [ext_resource type="Texture2D" uid="uid://6o4fpdtqkt78" path="res://assets/player/tile_0005.png" id="4_sweqy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
@@ -16,6 +17,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sweqy")
+}, {
 "duration": 1.0,
 "texture": ExtResource("2_onrkg")
 }],
@@ -41,9 +45,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 9.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
+size = Vector2(28, 25)
 
 [node name="Player" type="CharacterBody2D" unique_id=1038731677]
 collision_layer = 7
@@ -56,17 +59,20 @@ texture_filter = 1
 position = Vector2(0, -3.5)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"idle"
-frame_progress = 0.04971444
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329803871]
-shape = SubResource("CapsuleShape2D_onrkg")
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2hs0m")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1514940831]
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=50871058]
-shape = SubResource("CapsuleShape2D_onrkg")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=84658184]
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2hs0m")
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=720195993]
 one_shot = true

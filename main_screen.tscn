@@ -1,0 +1,319 @@
+[gd_scene format=4 uid="uid://bv5hu1wjqv2hy"]
+
+[ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="1_font"]
+[ext_resource type="Script" uid="uid://c5qxc5fsh2bs0" path="res://main_screen.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://jdicoa502bol" path="res://assets/player/down.png" id="3_kwhh3"]
+[ext_resource type="TileSet" uid="uid://b53lg2tmfhxo3" path="res://assets/background-tileset.tres" id="3_ue4rx"]
+[ext_resource type="Texture2D" uid="uid://d30enxcwgjsem" path="res://assets/phil (temporary)/side.png" id="3_ywh4s"]
+[ext_resource type="Texture2D" uid="uid://d0f6k710rrn6k" path="res://assets/phil (temporary)/down.png" id="4_4sclt"]
+[ext_resource type="Texture2D" uid="uid://dlavupuvlpvqg" path="res://assets/player/side.png" id="4_ue4rx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start"]
+content_margin_left = 32.0
+content_margin_top = 12.0
+content_margin_right = 32.0
+content_margin_bottom = 12.0
+bg_color = Color(0.85, 0.85, 0.88, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_hover"]
+content_margin_left = 32.0
+content_margin_top = 12.0
+content_margin_right = 32.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit"]
+content_margin_left = 32.0
+content_margin_top = 12.0
+content_margin_right = 32.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.5, 0.52, 0.7)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_hover"]
+content_margin_left = 32.0
+content_margin_top = 12.0
+content_margin_right = 32.0
+content_margin_bottom = 12.0
+bg_color = Color(0.12, 0.12, 0.14, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.7, 0.72, 0.9)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_leaderboard"]
+bg_color = Color(0, 0, 0, 0.9490196)
+border_width_right = 4
+border_color = Color(1, 1, 1, 1)
+shadow_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0, 0, 0, 0.9490196)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(8.117001, 8.117001, 8.117001, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/VBox/TitleLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_intro"]
+resource_name = "intro"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CenterContainer/VBox/TitleLabel:position")
+tracks/1/interp = 3
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 30), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_main"]
+_data = {
+&"RESET": SubResource("Animation_reset"),
+&"intro": SubResource("Animation_intro")
+}
+
+[node name="MainScreen" type="Control" unique_id=342409466]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_script")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=559534463]
+
+[node name="BgRect" type="ColorRect" parent="CanvasLayer" unique_id=637251968]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.004, 0.004, 0.006, 1)
+
+[node name="AccentLine" type="ColorRect" parent="CanvasLayer" unique_id=628900636]
+offset_right = 4.0
+offset_bottom = 648.0
+color = Color(0.9, 0.9, 0.92, 0.15)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1163677900]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/CenterContainer" unique_id=1667938352]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/CenterContainer/VBox" unique_id=1269363009]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.96, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 80
+text = "Extend Winter"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CanvasLayer/CenterContainer/VBox" unique_id=2098801589]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.58, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Don't.  Get.  Caught."
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/CenterContainer/VBox" unique_id=83511558]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBox" unique_id=1828501707]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="StartButton" type="Button" parent="CanvasLayer/CenterContainer/VBox/Buttons" unique_id=1298373126]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.06, 0.06, 0.08, 1)
+theme_override_colors/font_focus_color = Color(0.06, 0.06, 0.08, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0.02, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_start")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_start")
+theme_override_styles/hover = SubResource("StyleBoxFlat_start_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBox/Buttons" unique_id=1699391844]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.58, 1)
+theme_override_colors/font_focus_color = Color(0.55, 0.55, 0.58, 1)
+theme_override_colors/font_hover_color = Color(0.8, 0.8, 0.82, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_quit")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_quit")
+theme_override_styles/hover = SubResource("StyleBoxFlat_quit_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Quit"
+
+[node name="BackgroundTilemap" type="TileMapLayer" parent="CanvasLayer" unique_id=226599732]
+modulate = Color(1, 0.7372549, 0.27058825, 1)
+texture_filter = 1
+position = Vector2(853, 381)
+scale = Vector2(4.34, 4.34)
+tile_map_data = PackedByteArray("AADz//r/AAABAAcAAAD1//r/AAABAAcAAAD0//r/AAABAAcAAADz/wMAAAABAAUAAADz/wIAAAAGAAcAAADz/wEAAAAGAAEAAADz/wAAAAAGAAEAAADz////AAAGAAYAAADz//7/AAAGAAYAAADz//3/AAAGAAYAAADz//z/AAAGAAYAAADz//v/AAAGAAUAAAABAAMAAAABAAUAAAAAAAMAAAABAAUAAAD//wMAAAABAAUAAAD+/wMAAAABAAUAAAD9/wMAAAABAAUAAAD8/wMAAAABAAUAAAD7/wMAAAABAAUAAAD6/wMAAAABAAUAAAD5/wMAAAABAAUAAAD4/wMAAAABAAUAAAD3/wMAAAABAAUAAAD2/wMAAAABAAUAAAD1/wMAAAABAAUAAAD0/wMAAAABAAUAAAADAAMAAAABAAUAAAACAAMAAAABAAUAAAAEAAMAAAABAAUAAAAEAAIAAAAGAAcAAAAEAAEAAAAGAAYAAAAEAAAAAAAGAAYAAAAEAP//AAAGAAYAAAAEAP7/AAAIAAcAAAAEAP3/AAAGAAYAAAAEAPz/AAAGAAYAAAAEAPv/AAAGAAUAAAAEAPr/AAABAAcAAAADAPr/AAABAAcAAAACAPr/AAABAAcAAAABAPr/AAABAAcAAAAAAPr/AAABAAcAAAD///r/AAABAAcAAAD+//r/AAABAAcAAAD9//r/AAABAAcAAAD8//r/AAABAAcAAAD7//r/AAABAAcAAAD6//r/AAABAAcAAAD5//r/AAABAAcAAAD4//r/AAABAAcAAAD3//r/AAABAAcAAAD2//r/AAABAAcAAADy/wQAAAAAAAYAAADy/wMAAAAAAAUAAADy/wIAAAAFAAcAAADy/wEAAAAFAAYAAADy/wAAAAAFAAYAAADy////AAAFAAYAAADy//7/AAAFAAYAAADy//3/AAAFAAYAAADy//z/AAAFAAYAAADy//v/AAAFAAUAAADy//r/AAAAAAcAAADy//n/AAAAAAUAAAAFAAQAAAACAAYAAAAEAAQAAAABAAEAAAADAAQAAAABAAYAAAACAAQAAAABAAYAAAABAAQAAAABAAYAAAAAAAQAAAABAAYAAAD//wQAAAABAAYAAAD+/wQAAAABAAYAAAD9/wQAAAADAAcAAAD8/wQAAAABAAYAAAD7/wQAAAABAAEAAAD6/wQAAAABAAYAAAD5/wQAAAABAAYAAAD4/wQAAAABAAYAAAD3/wQAAAABAAYAAAD2/wQAAAABAAYAAAD1/wQAAAABAAYAAAD0/wQAAAABAAYAAADz/wQAAAABAAYAAAAFAAMAAAACAAUAAAAFAAIAAAAHAAcAAAAFAAEAAAAHAAYAAAAFAAAAAAAHAAYAAAAFAP//AAAHAAYAAAAFAP7/AAAHAAYAAAAFAP3/AAAHAAYAAAAFAPz/AAAHAAYAAAAFAPv/AAAHAAUAAAAFAPr/AAACAAcAAAAFAPn/AAACAAUAAAAEAPn/AAABAAUAAAADAPn/AAABAAUAAAACAPn/AAABAAUAAAABAPn/AAABAAUAAAAAAPn/AAABAAUAAAD///n/AAABAAUAAAD+//n/AAABAAUAAAD9//n/AAABAAUAAAD8//n/AAABAAUAAAD7//n/AAABAAUAAAD6//n/AAABAAUAAAD5//n/AAABAAUAAAD4//n/AAABAAUAAAD3//n/AAABAAUAAAD2//n/AAABAAUAAAD1//n/AAABAAUAAAD0//n/AAABAAUAAADz//n/AAABAAUAAAAFAAUAAAACAAcAAAAEAAUAAAABAAcAAAADAAUAAAABAAcAAAACAAUAAAABAAcAAAABAAUAAAABAAcAAAAAAAUAAAABAAcAAAD//wUAAAABAAcAAAD+/wUAAAABAAcAAAD9/wUAAAABAAcAAAD8/wUAAAABAAcAAAD7/wUAAAABAAcAAAD6/wUAAAABAAcAAAD5/wUAAAABAAcAAAD4/wUAAAABAAcAAAD3/wUAAAABAAcAAAD2/wUAAAABAAcAAAD1/wUAAAABAAcAAAD0/wUAAAABAAcAAADz/wUAAAABAAcAAADy/wUAAAAAAAcAAAD0/wIAAAAHAAcAAAD0/wEAAAAHAAYAAAD0/wAAAAAHAAYAAAD0////AAAHAAYAAAD0//7/AAAHAAYAAAD0//3/AAAHAAYAAAD0//z/AAAHAAYAAAD0//v/AAAHAAUAAAADAAIAAAAFAAcAAAADAAEAAAAFAAYAAAADAAAAAAAFAAYAAAADAP//AAAFAAYAAAADAP7/AAAFAAYAAAADAP3/AAAFAAYAAAADAPz/AAAFAAYAAAADAPv/AAAFAAUAAAA=")
+tile_set = ExtResource("3_ue4rx")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer" unique_id=1634667100]
+offset_left = 853.0
+offset_top = 381.0
+offset_right = 935.0
+offset_bottom = 463.0
+texture = ExtResource("3_ywh4s")
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer" unique_id=573906524]
+offset_left = 219.0
+offset_top = 381.0
+offset_right = 301.0
+offset_bottom = 463.0
+texture = ExtResource("4_ue4rx")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=725443116]
+offset_left = 696.0
+offset_top = 152.0
+offset_right = 741.0
+offset_bottom = 197.0
+texture = ExtResource("3_kwhh3")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1140181445]
+offset_left = 456.0
+offset_top = 152.0
+offset_right = 501.0
+offset_bottom = 197.0
+texture = ExtResource("4_4sclt")
+
+[node name="LeaderboardPanel" type="Panel" parent="CanvasLayer" unique_id=1226738866]
+offset_left = -400.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_leaderboard")
+
+[node name="ScoresButton" type="Button" parent="CanvasLayer/LeaderboardPanel" unique_id=1471603711]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 450.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "S
+C
+O
+R
+E
+S"
+
+[node name="Title" type="Label" parent="CanvasLayer/LeaderboardPanel" unique_id=2100066573]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 400.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 42
+text = "HIGH SCORES"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/LeaderboardPanel" unique_id=1541154479]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 100.0
+offset_right = 370.0
+offset_bottom = 620.0
+
+[node name="LeaderboardVBox" type="VBoxContainer" parent="CanvasLayer/LeaderboardPanel/ScrollContainer" unique_id=1139842481]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1212621421]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_main")
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBox/Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBox/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

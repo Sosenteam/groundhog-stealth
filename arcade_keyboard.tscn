@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://barchkbd01"]
+
+[ext_resource type="Script" uid="uid://barcsig234" path="res://arcade_keyboard.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="2_font"]
+
+[node name="ArcadeKeyboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BgRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.004019165, 0.004019165, 0.004019165, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/BgRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/BgRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/BgRect/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 50
+text = "ENTER INITIALS"
+horizontal_alignment = 1
+
+[node name="NameDisplay" type="Label" parent="CanvasLayer/BgRect/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 80
+theme_override_colors/font_color = Color(0.95, 0.85, 0.2, 1)
+text = "_ _ _ "
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/BgRect/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 7
+alignment = 1
+

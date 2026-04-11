@@ -19,10 +19,32 @@ var recent_states = []
 @onready var indicator_arrow = $ArrowPivot/IndicatorArrow
 var player_ref
 
+var phil_sprite: Sprite2D
+var dirt_sprite: Sprite2D
+
+var tex_up = preload("res://assets/phil (temporary)/up.png")
+var tex_down = preload("res://assets/phil (temporary)/down.png")
+var tex_side = preload("res://assets/phil (temporary)/side.png")
+var tex_sidedown = preload("res://assets/phil (temporary)/sidedown.png")
+var tex_dirt = preload("res://assets/phil (temporary)/popupdirt.png")
+var tex_underground = preload("res://assets/phil (temporary)/underground.png")
 
 func _ready() -> void:
 	if(get_parent().has_node("Player")):
 		player_ref = $"../Player"
+		
+	phil_sprite = Sprite2D.new()
+	phil_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	phil_sprite.z_index = 1
+	add_child(phil_sprite)
+	
+	dirt_sprite = Sprite2D.new()
+	dirt_sprite.texture = tex_dirt
+	dirt_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	dirt_sprite.z_index = 2
+	add_child(dirt_sprite)
+	
+	$AnimatedSprite2D.visible = false
 	
 	
 func _physics_process(delta: float) -> void:
@@ -41,6 +63,37 @@ func _physics_process(delta: float) -> void:
 			was_detecting = false
 	# Redraw detection meter
 	queue_redraw()
+	update_sprites()
+
+func update_sprites() -> void:
+	if $AnimatedSprite2D.animation == "burrowing":
+		phil_sprite.texture = tex_underground
+		dirt_sprite.visible = false
+		phil_sprite.flip_h = false
+		return
+		
+	dirt_sprite.visible = true
+	
+	var deg = rad_to_deg(direction.angle())
+	
+	if deg >= -22.5 and deg <= 22.5:
+		phil_sprite.texture = tex_side
+		phil_sprite.flip_h = false
+	elif deg > 22.5 and deg < 67.5:
+		phil_sprite.texture = tex_sidedown
+		phil_sprite.flip_h = false
+	elif deg >= 67.5 and deg <= 112.5:
+		phil_sprite.texture = tex_down
+		phil_sprite.flip_h = false
+	elif deg > 112.5 and deg < 157.5:
+		phil_sprite.texture = tex_sidedown
+		phil_sprite.flip_h = true
+	elif deg >= 157.5 or deg <= -157.5:
+		phil_sprite.texture = tex_side
+		phil_sprite.flip_h = true
+	else:
+		phil_sprite.texture = tex_up
+		phil_sprite.flip_h = false
 
 func _draw() -> void:
 	# Draw View Cone
