@@ -6,6 +6,7 @@ extends CanvasLayer
 var main_menu_btn: Button
 
 func _ready() -> void:
+	get_tree().paused = true
 	$restart.hide()
 	$redout.modulate.a = 0;
 	
@@ -40,13 +41,14 @@ func _ready() -> void:
 	main_menu_btn.add_theme_stylebox_override("hover", hover)
 	
 	var redtween = create_tween()
+	redtween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	redtween.tween_property($redout, "modulate:a", 1, redfadeTime).set_trans(Tween.TRANS_LINEAR)
 	
 	await redtween.finished
-	get_tree().paused = true
 	
 	var blacktween = create_tween()
-	blacktween.tween_property($redout, "modulate", Color.BLACK, blackfadeTime).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC);
+	blacktween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	blacktween.tween_property($redout, "modulate", Color.BLACK, blackfadeTime).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	
 	await blacktween.finished
 	

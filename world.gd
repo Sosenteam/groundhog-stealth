@@ -160,6 +160,8 @@ func _on_detected() -> void:
 	# Save Score to Database
 	var user = get_tree().root.get_meta("username", "AAA")
 	var coins = get_tree().root.get_meta("total_coins", 0)
+	var time_dict = Time.get_date_dict_from_system()
+	var run_date = str(time_dict.month) + "/" + str(time_dict.day) + "/" + str(time_dict.year)
 	
 	var file = FileAccess.open("user://scores.json", FileAccess.READ)
 	var scores = []
@@ -169,7 +171,7 @@ func _on_detected() -> void:
 			scores = json
 		file.close()
 		
-	scores.append({"user": user, "coins": coins})
+	scores.append({"user": user, "coins": coins, "date": run_date})
 	scores.sort_custom(func(a,b): return a.coins > b.coins)
 	
 	var out_file = FileAccess.open("user://scores.json", FileAccess.WRITE)

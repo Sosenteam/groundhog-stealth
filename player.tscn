@@ -46,7 +46,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
-size = Vector2(28, 25)
+size = Vector2(28, 12.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1038731677]
 collision_layer = 7
@@ -61,8 +61,7 @@ sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329803871]
-visible = false
-position = Vector2(0, 0.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_2hs0m")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1514940831]
@@ -70,8 +69,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=84658184]
-visible = false
-position = Vector2(0, 0.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_2hs0m")
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=720195993]

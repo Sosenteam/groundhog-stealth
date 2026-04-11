@@ -37,7 +37,12 @@ func load_leaderboard() -> void:
 			for score in scores:
 				var row = LEADERBOARD_ROW.instantiate()
 				leaderboard_vbox.add_child(row)
-				row.setup(n, str(score.user), int(score.coins))
+				leaderboard_vbox.add_child(row)
+				leaderboard_vbox.add_child(row)
+				var d_string = ""
+				if score.has("date"):
+					d_string = str(score.date)
+				row.setup(n, str(score.user), int(score.coins), d_string)
 				n += 1
 		file.close()
 
