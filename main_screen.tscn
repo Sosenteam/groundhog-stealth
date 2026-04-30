@@ -30,7 +30,21 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit"]
 content_margin_left = 32.0
@@ -211,7 +225,7 @@ theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_start")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_start")
 theme_override_styles/hover = SubResource("StyleBoxFlat_start_hover")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
 text = "Start Game"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBox/Buttons" unique_id=1699391844]
@@ -224,7 +238,7 @@ theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_quit")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_quit")
 theme_override_styles/hover = SubResource("StyleBoxFlat_quit_hover")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
 text = "Quit"
 
 [node name="BackgroundTilemap" type="TileMapLayer" parent="CanvasLayer" unique_id=226599732]
@@ -280,7 +294,7 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
 text = "S
 C
 O

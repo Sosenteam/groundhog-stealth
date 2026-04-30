@@ -15,9 +15,15 @@ func _process(delta: float) -> void:
 	pass
 	
 func newCoin():
-	var coinInstance:Area2D = coinPrefab.instantiate();
+	var coinInstance = coinPrefab.instantiate();
 	add_child(coinInstance);
+	
+	# Randomize position
+	coinInstance.position = Vector2(randf_range(-140, 140), randf_range(-140, 140))
 	
 	coinInstance.z_index = coinZIndex
 	coinInstance.collision_layer = 0;
-	coinInstance.set_collision_mask_value(coinCollisionLayer, true)	
+	coinInstance.set_collision_mask_value(coinCollisionLayer, true)
+	
+	# Respawn when collected
+	coinInstance.collected.connect(newCoin)

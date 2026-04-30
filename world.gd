@@ -14,6 +14,7 @@ const clock_scene = preload("res://clock.tscn")
 const win_scene = preload("res://win_screen.tscn")
 const phil_scene = preload("res://phil/phil.tscn")
 const coin_ui_scene = preload("res://coin_ui.tscn")
+const coin_scene = preload("res://coins/coin.tscn")
 var active_clock: Node
 var win_node: Node
 var coin_ui_node: Node
@@ -51,10 +52,7 @@ func _process(_delta: float) -> void:
 	#Getting if time ran out, if so, show win screen
 	if active_clock.getTimeInSeconds() <= 30.0 and not halfway_coin_spawned:
 		halfway_coin_spawned = true
-		if current_phil_ref:
-			var coin = preload("res://coins/coin.tscn").instantiate()
-			coin.position = current_phil_ref.position
-			level_container.add_child(coin)
+		spawn_coin()
 
 	if active_clock.getTimeInSeconds() == 0.0 && runWin == true:
 		win_node = win_scene.instantiate()
@@ -149,6 +147,31 @@ func _on_countdown_finished():
 	add_child(new_phil)
 	$DetectionLayer/DetectionMeter.connect_phil(new_phil)
 	get_tree().paused = false
+	
+	# Initial coin spawn on Phil
+	spawn_coin()
+	
+	# Show Dash Hint
+	var hint_label = $DetectionLayer/DashHint
+	hint_label.show()
+	hint_label.modulate.a = 1.0
+	
+	var hint_tween = create_tween()
+	hint_tween.tween_interval(3.0)
+	hint_tween.tween_property(hint_label, "modulate:a", 0.0, 1.0)
+	hint_tween.finished.connect(hint_label.hide)
+
+func spawn_coin():
+	if not current_phil_ref:
+		return
+		
+	var coin = coin_scene.instantiate()
+	coin.position = current_phil_ref.position
+	# Ensure it's in the world space/level container
+	level_container.add_child(coin)
+	
+	# Connect respawn signal
+	coin.collected.connect(spawn_coin)
 
 func _on_player_coins_changed(count: int) -> void:
 	get_tree().root.set_meta("total_coins", count)

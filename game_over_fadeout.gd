@@ -40,6 +40,29 @@ func _ready() -> void:
 	main_menu_btn.add_theme_stylebox_override("normal", style)
 	main_menu_btn.add_theme_stylebox_override("hover", hover)
 	
+	# White outline focus style for controller navigation
+	var focus_style = StyleBoxFlat.new()
+	focus_style.draw_center = false
+	focus_style.border_width_left = 3
+	focus_style.border_width_top = 3
+	focus_style.border_width_right = 3
+	focus_style.border_width_bottom = 3
+	focus_style.border_color = Color.WHITE
+	focus_style.corner_radius_top_left = 8
+	focus_style.corner_radius_top_right = 8
+	focus_style.corner_radius_bottom_right = 8
+	focus_style.corner_radius_bottom_left = 8
+	focus_style.expand_margin_left = 4.0
+	focus_style.expand_margin_top = 4.0
+	focus_style.expand_margin_right = 4.0
+	focus_style.expand_margin_bottom = 4.0
+	$restart.add_theme_stylebox_override("focus", focus_style)
+	main_menu_btn.add_theme_stylebox_override("focus", focus_style.duplicate())
+	
+	# Set up focus neighbors so d-pad navigates between buttons
+	$restart.focus_neighbor_bottom = main_menu_btn.get_path()
+	main_menu_btn.focus_neighbor_top = $restart.get_path()
+	
 	var redtween = create_tween()
 	redtween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	redtween.tween_property($redout, "modulate:a", 1, redfadeTime).set_trans(Tween.TRANS_LINEAR)
@@ -54,6 +77,7 @@ func _ready() -> void:
 	
 	$restart.show();
 	main_menu_btn.show()
+	$restart.grab_focus()
 
 
 func _on_restart_pressed() -> void:
@@ -61,9 +85,9 @@ func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("ui_accept")):
+	if event.is_action_pressed("gamepad_start"):
 		_on_restart_pressed()
-	if(event.is_action_pressed("ui_select")):
+	if event.is_action_pressed("gamepad_back"):
 		_on_main_menu_pressed()
 		
 

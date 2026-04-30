@@ -4,9 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://bxesb00d0dhp1" path="res://assets/whitescreen.png" id="1_f5l8f"]
 [ext_resource type="FontFile" uid="uid://cp7khvcr6ixv" path="res://assets/Font.ttf" id="3_yjcny"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus_restart"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
 [sub_resource type="Theme" id="Theme_ohykv"]
 default_font = ExtResource("3_yjcny")
 default_font_size = 40
+Button/styles/focus = SubResource("StyleBoxFlat_focus_restart")
 
 [node name="GameOverFadeout" type="CanvasLayer" unique_id=1629070600]
 process_mode = 3

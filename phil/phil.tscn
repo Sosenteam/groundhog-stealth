@@ -44,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33hcl"]
-size = Vector2(28, 12.5)
+size = Vector2(28, 21.25)
 
 [node name="Phil" type="CharacterBody2D" unique_id=161662381]
 process_mode = 1
@@ -55,8 +55,7 @@ speed = 150
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=929682683]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4y77u")
-animation = &"emerging"
-frame_progress = 0.32990038
+animation = &"idle"
 
 [node name="StateMachine" type="Node" parent="." unique_id=117218529]
 script = ExtResource("3_u43oq")
@@ -90,5 +89,5 @@ visible = false
 texture = ExtResource("11_rncno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1027390512]
-position = Vector2(0, 6)
+position = Vector2(0, 1.625)
 shape = SubResource("RectangleShape2D_33hcl")

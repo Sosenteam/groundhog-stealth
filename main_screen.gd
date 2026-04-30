@@ -18,6 +18,12 @@ func _ready() -> void:
 	$CanvasLayer/CenterContainer.modulate.a = 1.0
 	start_button.grab_focus()
 	scores_button.pressed.connect(_toggle_leaderboard)
+	
+	# Fix controller navigation to Scores button
+	start_button.focus_neighbor_right = scores_button.get_path()
+	quit_button.focus_neighbor_right = scores_button.get_path()
+	scores_button.focus_neighbor_left = start_button.get_path()
+	
 	load_leaderboard()
 
 func _on_start_button_pressed() -> void:
@@ -37,8 +43,6 @@ func load_leaderboard() -> void:
 			for score in scores:
 				var row = LEADERBOARD_ROW.instantiate()
 				leaderboard_vbox.add_child(row)
-				leaderboard_vbox.add_child(row)
-				leaderboard_vbox.add_child(row)
 				var d_string = ""
 				if score.has("date"):
 					d_string = str(score.date)
@@ -53,5 +57,10 @@ func _toggle_leaderboard() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and start_button.has_focus():
+	if event.is_action_pressed("gamepad_start"):
 		_on_start_button_pressed()
+	if event.is_action_pressed("gamepad_back"):
+		if leaderboard_open:
+			_toggle_leaderboard()
+		else:
+			_on_quit_button_pressed()

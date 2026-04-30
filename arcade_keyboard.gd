@@ -7,6 +7,24 @@ const world_scene = preload("res://world.tscn")
 var current_name = ""
 var max_length = 3
 
+func _make_focus_style() -> StyleBoxFlat:
+	var focus_style = StyleBoxFlat.new()
+	focus_style.draw_center = false
+	focus_style.border_width_left = 3
+	focus_style.border_width_top = 3
+	focus_style.border_width_right = 3
+	focus_style.border_width_bottom = 3
+	focus_style.border_color = Color.WHITE
+	focus_style.corner_radius_top_left = 2
+	focus_style.corner_radius_top_right = 2
+	focus_style.corner_radius_bottom_right = 2
+	focus_style.corner_radius_bottom_left = 2
+	focus_style.expand_margin_left = 3.0
+	focus_style.expand_margin_top = 3.0
+	focus_style.expand_margin_right = 3.0
+	focus_style.expand_margin_bottom = 3.0
+	return focus_style
+
 func _ready() -> void:
 	# Add keyboard buttons programmatically
 	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -17,6 +35,7 @@ func _ready() -> void:
 		btn.theme_type_variation = "KeyboardBtn"
 		# Setup style
 		btn.add_theme_font_size_override("font_size", 32)
+		btn.add_theme_stylebox_override("focus", _make_focus_style())
 		btn.pressed.connect(on_key_pressed.bind(char))
 		grid.add_child(btn)
 		
@@ -24,6 +43,7 @@ func _ready() -> void:
 	del_btn.text = "DEL"
 	del_btn.custom_minimum_size = Vector2(100, 60)
 	del_btn.add_theme_font_size_override("font_size", 28)
+	del_btn.add_theme_stylebox_override("focus", _make_focus_style())
 	del_btn.pressed.connect(on_key_pressed.bind("DEL"))
 	grid.add_child(del_btn)
 	
@@ -31,6 +51,7 @@ func _ready() -> void:
 	done_btn.text = "DONE"
 	done_btn.custom_minimum_size = Vector2(100, 60)
 	done_btn.add_theme_font_size_override("font_size", 28)
+	done_btn.add_theme_stylebox_override("focus", _make_focus_style())
 	done_btn.pressed.connect(on_key_pressed.bind("DONE"))
 	grid.add_child(done_btn)
 
@@ -41,11 +62,15 @@ func _ready() -> void:
 		grid.get_child(0).grab_focus()
 
 func on_key_pressed(key: String) -> void:
+	print(current_name)
 	if key == "DEL":
+		print("updaitn displau")
 		if current_name.length() > 0:
 			current_name = current_name.substr(0, current_name.length() - 1)
-	elif key == "DONE":
-		finish_input()
+	elif key == "DONE" || current_name.length() == 3:
+		print("JAHDJA") #so it doesn't go into next asnd add "done" to thing
+		if key == "DONE" && current_name.length() == 3:
+			finish_input()
 	else:
 		if current_name.length() < max_length:
 			current_name += key
@@ -58,6 +83,7 @@ func on_key_pressed(key: String) -> void:
 	update_display()
 
 func update_display() -> void:
+	print("updaitn displau")
 	var display_str = ""
 	for i in range(max_length):
 		if i < current_name.length():
@@ -67,6 +93,7 @@ func update_display() -> void:
 	name_label.text = display_str
 
 func finish_input() -> void:
+	print("Fisnihging input")
 	get_tree().root.set_meta("username", current_name)
 	get_tree().change_scene_to_packed(world_scene)
 
