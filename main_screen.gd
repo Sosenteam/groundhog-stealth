@@ -1,6 +1,6 @@
 extends Control
 
-const next_scene = preload("res://arcade_keyboard.tscn")
+var next_scene_path = "res://arcade_keyboard.tscn"
 const LEADERBOARD_ROW = preload("res://leaderboard_row.tscn")
 
 @onready var title_label: Label = $CanvasLayer/CenterContainer/VBox/TitleLabel
@@ -24,13 +24,32 @@ func _ready() -> void:
 	quit_button.focus_neighbor_right = scores_button.get_path()
 	scores_button.focus_neighbor_left = start_button.get_path()
 	
+	$CanvasLayer/MusicInfoContainer/MusicInfoButton.focus_entered.connect(func(): $CanvasLayer/MusicInfoContainer/MusicInfoButton.modulate = Color(1.5, 1.5, 1.5))
+	$CanvasLayer/MusicInfoContainer/MusicInfoButton.focus_exited.connect(func(): $CanvasLayer/MusicInfoContainer/MusicInfoButton.modulate = Color.WHITE)
+	$CanvasLayer/MusicInfoContainer/MusicInfoButton.mouse_entered.connect(func(): $CanvasLayer/MusicInfoContainer/MusicInfoButton.modulate = Color(1.5, 1.5, 1.5))
+	$CanvasLayer/MusicInfoContainer/MusicInfoButton.mouse_exited.connect(func(): $CanvasLayer/MusicInfoContainer/MusicInfoButton.modulate = Color.WHITE)
+	
+	ResourceLoader.load_threaded_request(next_scene_path)
+	ResourceLoader.load_threaded_request("res://CliffordGibson.tscn")
+	
 	load_leaderboard()
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_packed(next_scene)
+	var res = ResourceLoader.load_threaded_get(next_scene_path)
+	if res:
+		get_tree().change_scene_to_packed(res)
+	else:
+		get_tree().change_scene_to_file(next_scene_path)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_music_info_button_pressed() -> void:
+	var res = ResourceLoader.load_threaded_get("res://CliffordGibson.tscn")
+	if res:
+		get_tree().change_scene_to_packed(res)
+	else:
+		get_tree().change_scene_to_file("res://CliffordGibson.tscn")
 
 
 
@@ -41,6 +60,8 @@ func load_leaderboard() -> void:
 		if typeof(scores) == TYPE_ARRAY:
 			var n = 1
 			for score in scores:
+				if n > 100:
+					break
 				var row = LEADERBOARD_ROW.instantiate()
 				leaderboard_vbox.add_child(row)
 				var d_string = ""
@@ -48,6 +69,8 @@ func load_leaderboard() -> void:
 					d_string = str(score.date)
 				row.setup(n, str(score.user), int(score.coins), d_string)
 				n += 1
+				if n % 10 == 0:
+					await get_tree().process_frame
 		file.close()
 
 func _toggle_leaderboard() -> void:

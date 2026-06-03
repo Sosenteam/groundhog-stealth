@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cx6i1yvwvqu5g"]
+
+[ext_resource type="Script" path="res://info_sign.gd" id="1_info"]
+[ext_resource type="Texture2D" uid="uid://caxvq40k5f4p6" path="res://assets/collision-objects/stump.png" id="2_stump"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_info"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stump"]
+size = Vector2(30, 20)
+
+[node name="InfoSign" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_info")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_info")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_stump")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_stump")

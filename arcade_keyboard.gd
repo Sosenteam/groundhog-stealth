@@ -1,6 +1,6 @@
 extends Control
 
-const world_scene = preload("res://world.tscn")
+var world_scene_path = "res://world.tscn"
 @onready var name_label = $CanvasLayer/BgRect/CenterContainer/VBox/NameDisplay
 @onready var grid = $CanvasLayer/BgRect/CenterContainer/VBox/GridContainer
 
@@ -26,6 +26,7 @@ func _make_focus_style() -> StyleBoxFlat:
 	return focus_style
 
 func _ready() -> void:
+	ResourceLoader.load_threaded_request(world_scene_path)
 	# Add keyboard buttons programmatically
 	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	for char in alphabet:
@@ -95,7 +96,11 @@ func update_display() -> void:
 func finish_input() -> void:
 	print("Fisnihging input")
 	get_tree().root.set_meta("username", current_name)
-	get_tree().change_scene_to_packed(world_scene)
+	var res = ResourceLoader.load_threaded_get(world_scene_path)
+	if res:
+		get_tree().change_scene_to_packed(res)
+	else:
+		get_tree().change_scene_to_file(world_scene_path)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("move_dash"):

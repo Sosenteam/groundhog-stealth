@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d30enxcwgjsem" path="res://assets/phil (temporary)/side.png" id="3_ywh4s"]
 [ext_resource type="Texture2D" uid="uid://d0f6k710rrn6k" path="res://assets/phil (temporary)/down.png" id="4_4sclt"]
 [ext_resource type="Texture2D" uid="uid://dlavupuvlpvqg" path="res://assets/player/side.png" id="4_ue4rx"]
+[ext_resource type="Texture2D" uid="uid://pby0l0u2a0rb" path="res://assets/music_info.png" id="5_music_info"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start"]
 content_margin_left = 32.0
@@ -193,7 +194,7 @@ theme_override_constants/separation = 24
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/CenterContainer/VBox" unique_id=1269363009]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.94, 0.94, 0.96, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 80
 text = "Extend Winter"
@@ -217,6 +218,8 @@ theme_override_constants/separation = 14
 
 [node name="StartButton" type="Button" parent="CanvasLayer/CenterContainer/VBox/Buttons" unique_id=1298373126]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../LeaderboardPanel/ScoresButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_colors/font_color = Color(0.06, 0.06, 0.08, 1)
 theme_override_colors/font_focus_color = Color(0.06, 0.06, 0.08, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0.02, 1)
@@ -230,6 +233,9 @@ text = "Start Game"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBox/Buttons" unique_id=1699391844]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../LeaderboardPanel/ScoresButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../../../../MusicInfoContainer/MusicInfoButton")
 theme_override_colors/font_color = Color(0.55, 0.55, 0.58, 1)
 theme_override_colors/font_focus_color = Color(0.55, 0.55, 0.58, 1)
 theme_override_colors/font_hover_color = Color(0.8, 0.8, 0.82, 1)
@@ -289,6 +295,7 @@ offset_left = 400.0
 offset_top = 100.0
 offset_right = 450.0
 offset_bottom = 280.0
+focus_neighbor_right = NodePath("../../CenterContainer/VBox/Buttons/StartButton")
 theme_override_fonts/font = ExtResource("1_font")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
@@ -329,5 +336,36 @@ theme_override_constants/separation = 15
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_main")
 
+[node name="MusicInfoContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1750101031]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -60.0
+offset_right = 300.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MusicInfoLabel" type="Label" parent="CanvasLayer/MusicInfoContainer" unique_id=461943269]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "Sneaky Groundhog by Clifford Gibson"
+vertical_alignment = 1
+
+[node name="MusicInfoButton" type="TextureButton" parent="CanvasLayer/MusicInfoContainer" unique_id=1572020633]
+custom_minimum_size = Vector2(64.87, 43.74)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../CenterContainer/VBox/Buttons/QuitButton")
+texture_normal = ExtResource("5_music_info")
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBox/Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBox/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MusicInfoContainer/MusicInfoButton" to="." method="_on_music_info_button_pressed"]

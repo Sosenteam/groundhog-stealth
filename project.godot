@@ -15,6 +15,9 @@ run/main_scene="res://main_screen.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 gui/theme/custom="res://assets/main_theme.tres"
 
+[autoload]
+
+Music="*uid://bbypbs6ds04e4"
 
 [display]
 
